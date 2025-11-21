@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pydantic
+python-multipart
+aiofiles
+jinja2
+httpx
+fpdf
+email-validator
+python-dotenv
+google-generativeai
+bs4
