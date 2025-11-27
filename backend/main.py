@@ -29,17 +29,22 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins = [
+origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://taxnerdgpt.com",
-    "https://www.taxnerdgpt.com",
-    "https://app.taxnerdgpt.com"
-],
+    "https://taxnerd.us",
+    "https://www.taxnerd.us",
+    "https://app.taxnerd.us",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Mount API routers
 app.include_router(full_planner_router, prefix="/planner")
