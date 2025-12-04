@@ -147,7 +147,7 @@ if __name__ == "__main__":
 router = APIRouter()
 
 
-@router.post("/planner/3day")
+@router.post("/3day")
 async def generate_3day_plan(user_data: Dict[str, Any]):
     """
     FastAPI endpoint used by the React frontend.
