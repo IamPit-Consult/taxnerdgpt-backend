@@ -1,3 +1,4 @@
+
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
@@ -108,6 +109,8 @@ from typing import Dict, Any
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
+
+from services.gemini import gemini_full_life_roadmap
 
 # Load environment variables
 load_dotenv()
