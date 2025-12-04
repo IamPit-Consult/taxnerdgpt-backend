@@ -7,7 +7,6 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Dict, Any
 
-from services.gemini import gemini_full_life_roadmap
 
 router = APIRouter()
 
