@@ -104,7 +104,9 @@ if __name__ == "__main__":
 from fastapi import APIRouter, HTTPException
 from typing import Dict, Any
 
-from services.gemini import gemini_3day_roadmap  # adjust import if your file name differs
+# Import your 3-day roadmap generator from the services layer.
+# Make sure this import matches your actual services/gemini.py function.
+from services.gemini import gemini_3day_roadmap
 
 router = APIRouter()
 
@@ -113,26 +115,21 @@ router = APIRouter()
 async def generate_3day_plan(user_data: Dict[str, Any]):
     """
     Generate a 3-day roadmap.
+
     Accepts a flexible JSON payload from the frontend and passes it to Gemini.
+    Whatever the chat collected (name, main_goal, obstacles, etc.)
+    will be in user_data.
     """
     try:
-        # user_data will contain whatever the chat collected (name, goals, etc.)
         roadmap_text = gemini_3day_roadmap(user_data)
         return {"roadmap": roadmap_text}
     except Exception as e:
-        # This gives you a readable error instead of a generic 500
+        # Expose a clear error in the HTTP response instead of a silent 500
         raise HTTPException(
             status_code=500,
             detail=f"Error generating 3-day roadmap: {e}",
         )
 
-class Planner3Request(BaseModel):
-    name: str
-    main_goal: str
-    obstacles: str
-    support: str
-    notes: str
-    language: str = "en"
 
 @router.post("/3day")
 def generate_3day_roadmap_api(request: Planner3Request) -> Dict[str, Any]:
