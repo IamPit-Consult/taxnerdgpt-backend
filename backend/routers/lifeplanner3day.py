@@ -102,10 +102,29 @@ if __name__ == "__main__":
 
 # FastAPI router section
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
 from typing import Dict, Any
 
+from services.gemini import gemini_3day_roadmap  # adjust import if your file name differs
+
 router = APIRouter()
+
+
+@router.post("/planner/3day")
+async def generate_3day_plan(user_data: Dict[str, Any]):
+    """
+    Generate a 3-day roadmap.
+    Accepts a flexible JSON payload from the frontend and passes it to Gemini.
+    """
+    try:
+        # user_data will contain whatever the chat collected (name, goals, etc.)
+        roadmap_text = gemini_3day_roadmap(user_data)
+        return {"roadmap": roadmap_text}
+    except Exception as e:
+        # This gives you a readable error instead of a generic 500
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error generating 3-day roadmap: {e}",
+        )
 
 class Planner3Request(BaseModel):
     name: str
