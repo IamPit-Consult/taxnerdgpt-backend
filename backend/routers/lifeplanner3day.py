@@ -2,6 +2,8 @@ from fastapi import APIRouter, HTTPException
 from typing import Dict, Any
 
 router = APIRouter()
+# NOTE: main.py should include this router with prefix="/planner"
+# so the final path will be /planner/3day
 
 
 def simple_3day_roadmap(user_data: Dict[str, Any]) -> str:
@@ -65,11 +67,11 @@ Day 3 – Review, Adjust & Commit
     return roadmap.strip()
 
 
-@router.post("/planner/3day")
+@router.post("/3day")
 async def generate_3day_plan(user_data: Dict[str, Any]) -> Dict[str, Any]:
     """
     Generate a simple 3-day roadmap based on the chat answers.
-    This is intentionally NOT using Gemini so it can't fail on API issues.
+    Final path (with main.py prefix) will be:  /planner/3day
     """
     try:
         roadmap_text = simple_3day_roadmap(user_data)
