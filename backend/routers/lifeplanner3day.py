@@ -80,7 +80,7 @@ def gemini_3day_roadmap(user_data: Dict[str, Any], t=None, language: str = "en")
              "Format the roadmap like a professional report, with sections for 'Goal', 'Action Steps', 'Tips for Obstacles', and 'Using Support'."
     )
 
-    model = genai.GenerativeModel("models/gemini-2.5-flash-preview-05-20")
+    model = genai.GenerativeModel("gemini-2.0-flash-exp")
     response = model.generate_content(prompt)
 
     # Format the roadmap for better readability
