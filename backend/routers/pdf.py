@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from fastapi.responses import Response
 
-from backend.utils.pdf_letterhead import generate_roadmap_pdf_with_letterhead
+from utils.pdf_letterhead import generate_roadmap_pdf_with_letterhead
 
 router = APIRouter(
     prefix="/planner",
@@ -30,3 +30,4 @@ def download_roadmap_pdf(payload: dict):
             "Content-Disposition": "attachment; filename=TaxNerdGPT_Roadmap.pdf"
         }
     )
+
