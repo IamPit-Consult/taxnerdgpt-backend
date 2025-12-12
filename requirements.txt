@@ -11,3 +11,4 @@ python-dotenv
 google-generativeai
 bs4
 reportlab
+pypdf
