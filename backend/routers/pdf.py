@@ -20,7 +20,7 @@ def download_roadmap_pdf(payload: dict):
         roadmap_text=roadmap_text,
         output_title="TaxNerdGPT – Perpetual Life Planner",
         client_name=client_name,
-        template_path="backend/assets/TaxNerdGPT - CONSUMER PDF SHEET.pdf"
+        template_path="backend/asset/TaxNerdGPT - CONSUMER PDF SHEET.pdf"
     )
 
     return Response(
@@ -30,4 +30,5 @@ def download_roadmap_pdf(payload: dict):
             "Content-Disposition": "attachment; filename=TaxNerdGPT_Roadmap.pdf"
         }
     )
+
 
